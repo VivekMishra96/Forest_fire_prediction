@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Regression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/single.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body style="background: #03080a">
+<div class="container">
+    <h2>Forest Fire Regression  </h2>
+     <form method="POST" accept-charset="utf-8">
+        <div class="row100">
+            <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="day" id="day" required="required"  step="0.01">
+                    <span class="text">Day Range-[0 to 31]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+             <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="month" id ="month" required="required" step="0.01">
+                    <span class="text">Month Input[6 | 7 | 8 | 9]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+         <div class="row100">
+            <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="RH" required="required" step="0.01">
+                    <span class="text">RH Range-[21 to 90]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+             <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="Ws" required="required" step="0.01">
+                    <span class="text">WS Range-[9.5 to 21.5]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+          <div class="row100">
+            <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="Rain" required="required" step="0.01">
+                    <span class="text">Rain Range-[0 to 1.25]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+             <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="FFMC" required="required" step="0.01">
+                    <span class="text">FFMC Range-[47.7 to 96.0]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+           <div class="row100">
+            <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="DMC" required="required" step="0.01">
+                    <span class="text">DMC Range-[0.7 to 43]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+             <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="DC" required="required" step="0.01">
+                    <span class="text">DC Range-[6.9 to 150]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+           <div class="row100">
+            <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="ISI" required="required" step="0.01">
+                    <span class="text">ISI  Range-[0 to 16.15]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+             <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="BUI" required="required" step="0.01">
+                    <span class="text">BUI Range-[1.1 to 47.3]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+           <div class="row100">
+            <div class="col">
+                <div class="inputBox">
+                    <input type="number" name="FWI" required="required" step="0.01">
+                    <span class="text">FWI Range-[0 to 27.3]</span>
+                    <span class="line"></span>
+                </div>
+            </div>
+               <div class="col">
+            <input type="radio" id="fire" name="classes" value="1">
+             <label for="fire">FIRE</label>
+             <input type="radio" id="not_fire" name="classes" value="0">
+            <label for="not_fire">NOT FIRE</label>
+               </div>
+
+        </div>
+
+          <div class="row100">
+                <div class="col">
+                    <div class="text-center">
+                        <input type="submit" onclick="send_data()" value="Predict">
+                        <a type="button" class="Back" href="{{url_for('index')}}">Back</a>
+                    </div>
+                </div>
+          </div>
+     </form>
+     <div><h3><span id='prediction' style="color: orange"></span></h3></div>
+</div>
+<script>
+    function form_handler(event) {
+        event.preventDefault();
+    }
+    function send_data(){
+        //supress form default behaviour
+
+        document.querySelector('form').addEventListener('submit', form_handler);
+
+        //send & recieve data to predict
+        var fd = new FormData(document.querySelector('form'));
+        console.log(fd)
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST','/predict',true);
+        document.getElementById('prediction').innerHTML = "Wait! Predicting price..";
+
+        xhr.onreadystatechange = function()
+        {
+            if(xhr.readyState == XMLHttpRequest.DONE)
+            {
+                document.getElementById('prediction').innerHTML = "Predicted Temperature : " + xhr.responseText;
+            }
+        }
+
+        xhr.onload = function(){};
+        xhr.send(fd);
+    }
+</script>
+</body>
+</html>

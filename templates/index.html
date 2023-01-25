@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forest Fire Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<ul>
+     <li>
+        <a href="/single_classification" >
+            <div class="icon">
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+                <i class="fa fa-th-large" aria-hidden="true"></i>
+            </div>
+            <div class="name"> <span data-text="Single Classification">Single Classification</span></div>
+        </a>
+    </li>
+    <li>
+        <a href="/batch_classification" >
+            <div class="icon">
+                <i class="fa fa-th" aria-hidden="true"></i>
+                 <i class="fa fa-th" aria-hidden="true"></i>
+            </div>
+            <div class="name"> <span data-text="Batch Classification">Batch Classification</span></div>
+        </a>
+    </li>
+    <li>
+        <a href="/single_regression">
+            <div class="icon">
+                <i class="fa fa-line-chart" aria-hidden="true"></i>
+                <i class="fa fa-line-chart" aria-hidden="true"></i>
+
+            </div>
+            <div class="name"><span data-text="Single Prediction">Single Regression</span></div>
+        </a>
+    </li>
+     <li>
+        <a href="/batch_regression" >
+            <div class="icon">
+
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            </div>
+            <div class="name"><span data-text="Batch Prediction">Batch Regression</span></div>
+        </a>
+    </li>
+</ul>
+</body>
+</html>

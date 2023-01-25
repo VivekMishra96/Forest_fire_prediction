@@ -1,0 +1,126 @@
+*{
+    margin:0;
+    padding:0;
+    font-family : 'Poppins',sans-serif;
+    box-sizing : border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #03080a;
+}
+.container{
+    width: 80%;
+    padding: 20px;
+}
+.container h2{
+    width: 100%;
+    color: orange;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.container .row100{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+}
+.container .row100 .inputBox{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    color: orange;
+}
+.container .row100 .inputBox input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 0 10px;
+    z-index: 1;
+    color: #000;
+}
+.container .row100 .inputBox .text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 40px;
+    font-size: 18px;
+    padding: 0 10px;
+    display: block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.container .row100 .inputBox input:focus + .text,
+.container .row100 .inputBox input:valid + .text{
+    top:-35px;
+    left : -10px;
+}
+.container .row100 .inputBox .line{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background:orange;
+    transition: 0.5s;
+    border-radius: 2px;
+    pointer-events: none;
+}
+.container .row100 .inputBox input:focus ~ .line,
+.container .row100 .inputBox input:valid ~ .line{
+    height:100%
+}
+.container .col{
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+    margin: 30px 0 10px;
+    transition: 0.5s;
+}
+input[type='submit']{
+    border: none;
+    padding: 7px 35px;
+    cursor: pointer;
+    outline: none;
+    background: orange;
+    color: #000;
+    font-size: 18px;
+    border-radius: 2px;
+}
+.Back{
+    border: none;
+    padding: 7px 35px;
+    cursor: pointer;
+    outline: none;
+    background: orange;
+    color: #000;
+    font-size: 18px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+input[type='radio']{
+    display:none;
+}
+label{
+    position: relative;
+    color: orange;
+    font-size: 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px 50px;
+    cursor:pointer;
+    align-items: center;
+}
+
+input[type='radio']:checked + label{
+    background-color:orange;
+    color:white;
+}
